@@ -1,7 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package museo;
 
 import java.util.ArrayList;
@@ -13,33 +12,41 @@ import java.util.Objects;
  * @author eduardo
  */
 public class Museo {
-    
+
     private String nombre;
     private String direccion;
     private List<Empleado> listaEmpleado;
     private List<Sala> listaSala;
 
-    public Museo(String nombre, String direccion) {
+    public Museo(String nombre, String direccion, List<Empleado> listaEmpleados, List<Sala> listaSalas) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.listaEmpleado = new ArrayList<>();
         this.listaSala = new ArrayList<>();
     }
-    
-    public void contratar(){
-        
+
+    public void contratar(Empleado emp) {
+        listaEmpleado.add(emp);
     }
-    
-    public void despedir(){
-        
+
+    public void despedir(Empleado emp) {
+        listaEmpleado.remove(emp);
     }
-    
-    public boolean añadirSala(){
-    
+
+    public boolean añadirSala(Sala sal) {
+        boolean salaAñadida = true;
+        if (listaSala.contains(sal)) {
+            return salaAñadida;
+        }
+        return false;
     }
-    
-    public boolean quitarSala(){
-        
+
+    public void quitarSala(Sala sal) { 
+        if(listaSala.contains(sal)){
+            listaSala.remove(sal);
+        }else{
+            System.out.println("La sala se encuentra en el museo");
+        }
     }
 
     public String getNombre() {
